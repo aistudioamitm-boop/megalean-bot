@@ -1,6 +1,7 @@
 import requests
 import os
 import time
+import sys
 from urllib.parse import quote
 
 # --- Configuration ---
@@ -9,8 +10,8 @@ CHAT_ID = '-1003794694855'
 FILENAME = 'watchlist.txt'
 
 def get_watchlist():
-    # מוודא שהקובץ קיים בתיקייה של הסקריפט
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # מוודא שהקובץ קיים בתיקייה של הסקריפט (מותאם ל-GitHub Actions)
+    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
     file_path = os.path.join(script_dir, FILENAME)
     
     if not os.path.exists(file_path):
@@ -61,10 +62,12 @@ def main():
         # הפסקה קצרה למניעת חסימות
         time.sleep(2)
 
+    # --- השורה שהוספה ---
+    requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", 
+                  data={"chat_id": CHAT_ID, "text": "✅ סבב החיפוש הסתיים בהצלחה."})
+    # ---------------------
+
     print("--- All checks completed. Closing. ---")
 
 if __name__ == '__main__':
     main()
-
-
-
