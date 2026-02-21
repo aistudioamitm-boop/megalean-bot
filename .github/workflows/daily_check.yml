@@ -3,7 +3,7 @@ name: Megalean Daily Check
 on:
   schedule:
     # 15:06 UTC זה 17:06 שעון ישראל (חורף)
-    - cron: '06 17 * * *'
+    - cron: '48 17 * * *'
   workflow_dispatch: # מאפשר הרצה ידנית בלחיצת כפתור
 
 jobs:
