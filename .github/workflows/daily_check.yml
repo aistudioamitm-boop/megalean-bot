@@ -2,9 +2,9 @@ name: Megalean Daily Check
 
 on:
   schedule:
-    # 09:00 UTC זה 11:00 שעון ישראל (או 12:00 בשעון קיץ)
-    - cron: '0 9 * * *'
-  workflow_dispatch: # מאפשר לך להריץ את הבדיקה גם ידנית בלחיצת כפתור
+    # 14:51 UTC זה 16:50 שעון ישראל (בשעון חורף)
+    - cron: '50 14 * * *'
+  workflow_dispatch: # מאפשר להריץ ידנית לבדיקה
 
 jobs:
   build:
@@ -20,7 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install requests
 
       - name: Run Bot
+        # אם הקובץ נמצא בתיקייה הראשית, השורה הזו תעבוד. 
+        # אם הוא בתיקייה פנימית, שנה ל: python megalean-bot/bot.py
         run: python bot.py
