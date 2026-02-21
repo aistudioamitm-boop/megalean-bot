@@ -6,7 +6,7 @@ from urllib.parse import quote
 # --- Configuration ---
 TOKEN = '8366323813:AAEjGQjQmcNuM74DFeh86cnQRni1_ITk7Vw'
 CHAT_ID = '-1003794694855'
-FILENAME = 'Wl.txt'
+FILENAME = 'Watchlist.txt'
 
 def get_watchlist():
     # מוודא שהקובץ קיים בתיקייה של הסקריפט
@@ -65,4 +65,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
