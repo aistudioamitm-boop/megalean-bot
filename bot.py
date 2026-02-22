@@ -8,8 +8,8 @@ from urllib.parse import quote
 TOKEN = '8366323813:AAEjGQjQmcNuM74DFeh86cnQRni1_ITk7Vw'
 CHAT_ID = '-1003794694855'
 
-# Google Sheet Configuration
-SHEET_ID = '1QQvyCfaNoLjr1YkMgUCsI9mj0CAn4PyFWPNAfChuTHY'
+# Google Sheet Configuration (הלינק החדש שסיפקת)
+SHEET_ID = '1uFYLdJ_ntMBzPxl9fSYr2Aymgr4Q-PvUvbGfpt40YyI'
 SHEET_URL = f'https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv'
 
 def get_watchlist_from_sheets():
@@ -25,8 +25,7 @@ def get_watchlist_from_sheets():
         names = [line.split(',')[0].strip() for line in lines if line.strip()]
         
         # הסרת כותרת אם קיימת (למשל אם כתבת "שם המופע" בשורה הראשונה)
-        # אם השורה הראשונה היא כבר שם לחיפוש, אפשר להוריד את ה-if הבא
-        if names and (names[0] == "שם" or names[0] == "Name"):
+        if names and (names[0] == "שם" or names[0] == "Name" or names[0] == "שמות"):
             names = names[1:]
             
         print(f"✅ Fetched {len(names)} items from Google Sheets.")
@@ -62,7 +61,7 @@ def main():
     names = get_watchlist_from_sheets()
     
     if not names:
-        print("Watchlist is empty.")
+        print("Watchlist is empty or sheet is not public.")
         return
 
     for item in names:
